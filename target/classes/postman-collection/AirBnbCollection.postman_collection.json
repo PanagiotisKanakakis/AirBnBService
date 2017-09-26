@@ -1,0 +1,502 @@
+{
+	"id": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+	"name": "AirBnbCollection",
+	"description": "",
+	"order": [
+		"98903950-4b34-58f2-00a6-d032bcb1ce28",
+		"2fde6645-3224-bb23-e084-70747f6778dc",
+		"f9fa2734-361b-2aec-f0f9-2c0d2e48eea4",
+		"51c26563-91dd-b41e-4aa8-00d2c2c49f5a",
+		"fb30b766-91e0-1d09-02eb-a9a5bfcfc419",
+		"14110076-f155-c44b-5ea5-5891807b6e4f",
+		"c17a1248-a1e6-a2c8-d575-390a9b0ac66c",
+		"358943e6-f4ee-dfaf-282c-b94026429fb0",
+		"391d20e7-888d-2b12-91d8-6eaaa809c3aa",
+		"4ec40088-0ea5-be78-4628-0110b1eb755b",
+		"434863a9-da9d-0d84-56f0-092d8c3f65eb",
+		"a2bdf77e-a0ac-c937-5910-21ae9c38650e",
+		"613e4026-bad8-0475-6aff-4dff23408a8a",
+		"b17e0c7c-35cd-6df6-968c-16a50377c2c9",
+		"e8aa80cd-9419-c93a-1e49-137b0da74ddf",
+		"4ecf0ac2-788a-bc8f-5179-799e7850fbeb"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1499277375561,
+	"owner": "2413146",
+	"public": false,
+	"requests": [
+		{
+			"id": "14110076-f155-c44b-5ea5-5891807b6e4f",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/getAllResidences",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501428174712,
+			"name": "http://localhost:8080/getAllResidences",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": []
+		},
+		{
+			"id": "2fde6645-3224-bb23-e084-70747f6778dc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502554373946,
+			"name": "http://localhost:8080/register",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n  \"username\" : \"panagiotis\",\n  \"password\" : \"123123\",\n  \"name\" : \"Panagiotis\", \n  \"surname\" : \"Kanakakis\",\n  \"email\" : \"new email\",\n  \"phoneNumber\" : \"6973510999\",\n  \"city\" : \"Nikaia\",\n  \"roleDtos\" : [\n    \"HOST\"\n  ],\n  \"photo\": \"\"\n  \n}"
+		},
+		{
+			"id": "358943e6-f4ee-dfaf-282c-b94026429fb0",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/updateResidence",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502457019890,
+			"name": "http://localhost:8080/updateResidence",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n\t\"residenceId\" : 1,\n\t\"address\" : \"Gr. Lampraki\",\n\t\"geoX\" : 20.1,\n\t\"geoY\" : 10,\n\t\"capacity\" : 4,\n\t\"prize\" : 50,\n\t\"type\" : \"Saloon\",\n\t\"rules\" : \"Attention please - Updated rules\",\n\t\"description\" : \"Diamperes\",\n\t\"bedrooms\" : 3,\n\t\"bathrooms\" : 1,\n\t\"size\" : 90.12,\n\t\"livingRoom\" : true,\n\t\"location\" : \"Athens\"\n}"
+		},
+		{
+			"id": "391d20e7-888d-2b12-91d8-6eaaa809c3aa",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/deleteResidence",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501435293481,
+			"name": "http://localhost:8080/deleteResidence",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": " {\n        \"residenceId\": 4,\n        \"address\": \"Andromahis\",\n        \"geoX\": 20.1,\n        \"geoY\": 10,\n        \"datesAvailable\": \"1;2;\",\n        \"capacity\": 4,\n        \"prize\": 50,\n        \"type\": \"Saloon\",\n        \"rules\": \"Attention please\",\n        \"description\": \"Diamperes\",\n        \"bathrooms\": 1,\n        \"size\": 90.12,\n        \"bedrooms\": 3,\n        \"livingRoom\": true,\n        \"location\": null,\n        \"comments\": [\n            {\n                \"commentId\": 4,\n                \"comment\": \"Test comment\",\n                \"grade\": 4\n            }\n        ]\n    }"
+		},
+		{
+			"id": "434863a9-da9d-0d84-56f0-092d8c3f65eb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/reserveResidence",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502553922496,
+			"name": "http://localhost:8080/reserveResidence",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n  \"residenceId\" : 1,\n  \"username\" : \"chris\",\n  \"arrivalDate\" : \"2017-08-22\",\n  \"departureDate\" : \"2017-08-28\"\n}"
+		},
+		{
+			"id": "4ec40088-0ea5-be78-4628-0110b1eb755b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"url": "http://localhost:8080/getResidencesBasedOnUserSearchedLocations",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1502029180595,
+			"name": "http://localhost:8080/getResidencesBasedOnUserSearchedLocations",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"folder": null,
+			"descriptionFormat": "html",
+			"rawModeData": "{\n  \"username\":\"chris\"\n}"
+		},
+		{
+			"id": "4ecf0ac2-788a-bc8f-5179-799e7850fbeb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/updateProfile",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502554465706,
+			"name": "http://localhost:8080/updateProfile",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n\t\"username\": \"panagiotis\",\n\t\"name\": \"name\",\n\t\"surname\": \"surname\",\n\t\"email\" : \"email\",\n\t\"photo\" : \"path/to/photo\",\n\t\"city\" : \"Athens\",\n\t\"roleDtos\" : [\n    \"HOST\",\n    \"TENANT\"\n\t]\n}"
+		},
+		{
+			"id": "51c26563-91dd-b41e-4aa8-00d2c2c49f5a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/searchResidence",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502553979486,
+			"name": "http://localhost:8080/searchResidence",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n  \"username\" : \"chris\",\n  \"capacity\" : 4,\n  \"location\" : \"Athens\",\n  \"arrivalDate\" : \"2017-08-17\",\n  \"departureDate\" : \"2017-08-21\"\n}"
+		},
+		{
+			"id": "613e4026-bad8-0475-6aff-4dff23408a8a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"url": "http://localhost:8080/getInbox",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1502059478352,
+			"name": "http://localhost:8080/getInbox",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"folder": null,
+			"descriptionFormat": "html",
+			"rawModeData": "{\n  \"username\" : \"chris\"\n}"
+		},
+		{
+			"id": "98903950-4b34-58f2-00a6-d032bcb1ce28",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502554475661,
+			"name": "http://localhost:8080/login",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n\t\"username\" : \"panagiotis\",\n\t\"password\" : \"123123\"\n}"
+		},
+		{
+			"id": "a2bdf77e-a0ac-c937-5910-21ae9c38650e",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"url": "http://localhost:8080/newMessage",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1502059355860,
+			"name": "http://localhost:8080/newMessage",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"folder": null,
+			"descriptionFormat": "html",
+			"rawModeData": "{\n  \"fromUser\": \"chris\",\n  \"toUser\": \"panagiotis\",\n  \"messageText\": \"test message \"\n}"
+		},
+		{
+			"id": "b17e0c7c-35cd-6df6-968c-16a50377c2c9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"url": "http://localhost:8080/getOutbox",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1502059695128,
+			"name": "http://localhost:8080/getOutbox",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"folder": null,
+			"descriptionFormat": "html",
+			"rawModeData": "{\n  \"username\" : \"chris\"\n}"
+		},
+		{
+			"id": "c17a1248-a1e6-a2c8-d575-390a9b0ac66c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"url": "http://localhost:8080/addComment",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1501435265729,
+			"name": "http://localhost:8080/addComment",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"folder": null,
+			"descriptionFormat": "html",
+			"rawModeData": "{\n  \"residenceId\" : \"1\",\n  \"comment\" : \"Test comment\",\n  \"grade\" : \"4\"\n}"
+		},
+		{
+			"id": "e8aa80cd-9419-c93a-1e49-137b0da74ddf",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/getProfile",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502554813814,
+			"name": "http://localhost:8080/getProfile",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"rawModeData": "{\n  \"username\":\"chris\"\n}"
+		},
+		{
+			"id": "f9fa2734-361b-2aec-f0f9-2c0d2e48eea4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/residence",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502021479884,
+			"name": "http://localhost:8080/residence",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"rawModeData": "{\n\t\"address\" : \"Andromahis\",\n\t\"geoX\" : 20.1,\n\t\"geoY\" : \"10\",\n\t\"capacity\" : 4,\n\t\"prize\" : 50,\n\t\"type\" : \"Saloon\",\n\t\"rules\" : \"Attention please\",\n\t\"description\" : \"Diamperes\",\n\t\"bedrooms\" : 3,\n\t\"bathrooms\" : 1,\n\t\"size\" : 90.12,\n\t\"livingRoom\" : true,\n\t\"username\" : \"chris\"\n}"
+		},
+		{
+			"id": "fb30b766-91e0-1d09-02eb-a9a5bfcfc419",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"url": "http://localhost:8080/searchResidenceById",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1502029478480,
+			"name": "http://localhost:8080/searchResidenceById",
+			"description": "",
+			"collectionId": "8f4b4dd6-f62f-7612-b970-f124aa8776a0",
+			"responses": [],
+			"folder": null,
+			"descriptionFormat": "html",
+			"rawModeData": "{\n  \"residenceId\" : 1\n}"
+		}
+	]
+}
