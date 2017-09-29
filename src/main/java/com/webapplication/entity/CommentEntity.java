@@ -27,6 +27,19 @@ public class CommentEntity {
     @JsonIgnore
     private ResidenceEntity residenceEntity;
 
+    @OneToOne
+    @JsonIgnore
+    private UserEntity user;
+
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
     public Integer getCommentId() {
         return commentId;
     }

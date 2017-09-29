@@ -2,6 +2,7 @@ package com.webapplication.service;
 
 import com.webapplication.dao.ResidenceRepository;
 import com.webapplication.dao.UserRepository;
+import com.webapplication.dto.comment.CommentDto;
 import com.webapplication.dto.residence.*;
 import com.webapplication.dto.user.UserUtilsDto;
 import com.webapplication.entity.*;
@@ -10,6 +11,7 @@ import com.webapplication.error.UserError;
 import com.webapplication.exception.AuthenticationException;
 import com.webapplication.exception.ResidenceException;
 import com.webapplication.exception.RestException;
+import com.webapplication.mapper.CommentMapper;
 import com.webapplication.mapper.ResidenceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,13 +30,13 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
     private ResidenceRepository residenceRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CommentMapper commentMapper;
 
     @Override
     public ResidenceEntity addResidence(AddResidenceRequestDto addResidenceRequestDto) throws RestException {
         ResidenceEntity residenceEntity = residenceMapper.toResidenceEntity(addResidenceRequestDto);
         residenceEntity = residenceRepository.save(residenceEntity);
-        System.out.println(residenceEntity.getResidenceId());
-        System.out.println(residenceEntity.getType());
         return residenceEntity;
     }
 
@@ -72,17 +74,21 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
                 if ( !((arrivalDate.after(res.getDepartureDate()) && departureDate.after(res.getDepartureDate()) ) || (arrivalDate.before(res.getArrivalDate()) && departureDate.before(res.getArrivalDate()) )) )
                     return false;
         }
+
+        if(re.getReservationInfo() == null)
+            if ( arrivalDate.before(new Date()) || departureDate.before(new Date()))
+                return false;
+
         return true;
     }
 
     @Override
-    public ResidenceEntity searchResidenceById(SearchResidenceByIdDto searchResidenceByIdDto) throws RestException {
+    public AddResidenceResponseDto searchResidenceById(SearchResidenceByIdDto searchResidenceByIdDto) throws RestException {
         Integer residenceId = searchResidenceByIdDto.getResidenceId();
         ResidenceEntity residenceEntity = residenceRepository.findOne(residenceId);
-
         if(residenceEntity == null)
             throw new ResidenceException(ResidenceError.RESIDENCE_ID_NOT_EXISTS);
-        return residenceEntity;
+        return residenceMapper.toAddResidenceResponseDto(residenceEntity);
     }
 
     @Override
@@ -93,11 +99,12 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
     }
 
     @Override
-    public ResidenceEntity addComment(AddCommentToResidenceDto addCommentToResidenceDto) throws RestException{
+    public void addComment(AddCommentToResidenceDto addCommentToResidenceDto) throws RestException{
         Integer residenceId = addCommentToResidenceDto.getResidenceId();
         String comment = addCommentToResidenceDto.getComment();
         Integer grade = addCommentToResidenceDto.getGrade();
         ResidenceEntity residenceEntity = residenceRepository.findOne(residenceId);
+        UserEntity user = userRepository.findUserEntityByUsername(addCommentToResidenceDto.getUsername());
 
         if(residenceEntity == null)
             throw new ResidenceException(ResidenceError.RESIDENCE_ID_NOT_EXISTS);
@@ -106,16 +113,24 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
         commentEntity.setComment(comment);
         commentEntity.setGrade(grade);
         commentEntity.setResidenceEntity(residenceEntity);
+        commentEntity.setUser(user);
 
         residenceEntity.getComments().add(commentEntity);
-        return residenceEntity;
     }
 
     @Override
-    public ResidenceEntity updateResidence(ResidenceEntity residenceEntity) throws RestException {
-        if ( residenceRepository.findOne(residenceEntity.getResidenceId()) == null  )
+    public ResidenceEntity updateResidence(ResidenceEntity residence) throws RestException {
+        ResidenceEntity updated_residence = residenceRepository.findOne(residence.getResidenceId());
+        if(updated_residence.getResidenceId() == null)
             throw new ResidenceException(ResidenceError.RESIDENCE_ID_NOT_EXISTS);
-        return residenceRepository.save(residenceEntity);
+        updated_residence.setResidenceId(residence.getResidenceId());
+        updated_residence.setPrize(residence.getPrize());
+        updated_residence.setBathrooms(residence.getBathrooms());
+        updated_residence.setCapacity(residence.getCapacity());
+        updated_residence.setBedrooms(residence.getBedrooms());
+        updated_residence.setBeds(residence.getBeds());
+
+        return residenceRepository.save(updated_residence);
     }
 
     @Override
@@ -144,14 +159,17 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
             throw new AuthenticationException(UserError.USER_NOT_EXISTS);
 
 
-        for(SearchEntity se : searchedResidences){
-            List<ResidenceEntity> re = residenceRepository.findByLocationOrCapacity(se.getLocation(),null);
-            for(ResidenceEntity r : re){
-                if (! resultSet.contains(r))
-                    resultSet.add(r);
+        if(searchedResidences.size() == 0){
+            return getAllResidences();
+        }else{
+            for(SearchEntity se : searchedResidences){
+                List<ResidenceEntity> re = residenceRepository.findByLocationOrCapacity(se.getLocation(),null);
+                for(ResidenceEntity r : re){
+                    if (! resultSet.contains(r))
+                        resultSet.add(r);
+                }
             }
         }
-
         return new ArrayList<>(resultSet);
     }
 
@@ -172,6 +190,12 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
         re.setDepartureDate(reservationDto.getDepartureDate());
         u.getReservedResidences().add(re);
         r.getReservationInfo().add(re);
+    }
+
+    @Override
+    public List<CommentDto> getCommentOfResidence(SearchResidenceByIdDto searchResidenceByIdDto) throws RestException {
+        ResidenceEntity r = residenceRepository.findOne(searchResidenceByIdDto.getResidenceId());
+        return commentMapper.toCommentDto(r.getComments());
     }
 
 }

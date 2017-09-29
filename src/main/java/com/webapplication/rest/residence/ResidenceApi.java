@@ -1,6 +1,7 @@
 package com.webapplication.rest.residence;
 
 
+import com.webapplication.dto.comment.CommentDto;
 import com.webapplication.dto.residence.*;
 import com.webapplication.dto.user.UserUtilsDto;
 import com.webapplication.entity.ResidenceEntity;
@@ -22,13 +23,13 @@ public interface ResidenceApi {
     List<ResidenceEntity> searchResidence(SearchResidenceDto searchResidenceDto) throws RestException, IOException;
 
     @RequestMapping(path = "/searchResidenceById" , method = RequestMethod.POST ,consumes = "application/json", produces = "application/json")
-    ResidenceEntity searchResidenceById(SearchResidenceByIdDto searchResidenceByIdDto) throws  RestException;
+    AddResidenceResponseDto searchResidenceById(SearchResidenceByIdDto searchResidenceByIdDto) throws  RestException;
 
     @RequestMapping(path = "/getAllResidences" , method = RequestMethod.GET ,produces = "application/json")
     List<ResidenceEntity> getAllResidence() throws  RestException;
 
     @RequestMapping(path = "/addComment" , method = RequestMethod.POST ,consumes = "application/json",produces = "application/json")
-    ResidenceEntity addComment(AddCommentToResidenceDto addCommentToResidenceDto) throws RestException;
+    void addComment(AddCommentToResidenceDto addCommentToResidenceDto) throws RestException;
 
     @RequestMapping(path = "/updateResidence" , method = RequestMethod.POST ,consumes = "application/json",produces = "application/json")
     ResidenceEntity updateResidence(ResidenceEntity residenceEntity) throws RestException;
@@ -39,7 +40,11 @@ public interface ResidenceApi {
     @RequestMapping(path = "/getResidencesBasedOnUserSearchedLocations" , method = RequestMethod.POST ,produces = "application/json")
     List<ResidenceEntity> getResidencesBasedOnUserSearchedLocations(UserUtilsDto userUtilsDto) throws  RestException;
 
-    @RequestMapping(path = "/reserveResidence" , method = RequestMethod.POST ,produces = "application/json")
+    @RequestMapping(path = "/reserveResidence" , method = RequestMethod.POST ,consumes = "application/json")
     void reserveResidence(ReservationDto reservationDto) throws  RestException;
+
+    @RequestMapping(path = "/getCommentsForResidence" , method = RequestMethod.POST,consumes = "application/json",
+            produces = "application/json")
+    List<CommentDto> getCommentsForResidence(SearchResidenceByIdDto searchResidenceByIdDto) throws  RestException;
 
 }

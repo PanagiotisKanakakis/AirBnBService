@@ -5,12 +5,18 @@ package com.webapplication.dto.residence;
  */
 public class AddCommentToResidenceDto {
 
-
     public Integer residenceId;
-
     public String comment;
-
     public Integer grade;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Integer getResidenceId() {
         return residenceId;

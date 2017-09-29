@@ -1,43 +1,49 @@
 package com.webapplication.dto.residence;
 
 
+import com.webapplication.entity.CommentEntity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddResidenceResponseDto {
 
     private Integer residenceId;
-
     private String address;
-
     private Double geoX;
-
     private Double geoY;
-
     private String datesReserved;
-
     private Integer capacity;
-
     private Integer prize;
-
     private String type;
-
     private String rules;
-
     private String description;
-
     private Integer bathrooms;
-
     private Double size;
-
     private Integer bedrooms;
-
+    private Integer beds;
     private Boolean livingRoom;
-
     private String location;
-
     private String  username;
+    private List<String> photoPaths = new ArrayList<>();
+    private List<CommentEntity> comments = new ArrayList<>();
 
-    private List<String> photoPaths;
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    public Integer getBeds() {
+        return beds;
+    }
+
+    public void setBeds(Integer beds) {
+        this.beds = beds;
+    }
 
     public Integer getResidenceId() {
         return residenceId;

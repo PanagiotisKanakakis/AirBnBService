@@ -59,9 +59,9 @@ public class ResidenceEntity {
     @Column(name = "BEDS")
     private Integer beds;
 
-    @ElementCollection
+    @OneToMany(mappedBy = "residenceEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Column(name = "Photo paths")
-    private List<String> photoPaths = new ArrayList<>();
+    private List<PhotoEntity> photoPaths = new ArrayList<>();
 
     @JsonIgnore
     @ManyToMany(mappedBy = "residences")
@@ -186,11 +186,11 @@ public class ResidenceEntity {
         this.location = location;
     }
 
-    public List<String> getPhotoPaths() {
+    public List<PhotoEntity> getPhotoPaths() {
         return photoPaths;
     }
 
-    public void setPhotoPaths(List<String> photoPaths) {
+    public void setPhotoPaths(List<PhotoEntity> photoPaths) {
         this.photoPaths = photoPaths;
     }
 

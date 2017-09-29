@@ -42,6 +42,7 @@
 /home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/error/UserError.java
 /home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/dto/user/UserLogInRequestDto.java
 /home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/dto/user/UserProfileDto.java
+/home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/mapper/CommentMapper.java
 /home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/dto/message/NewMessageDto.java
 /home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/dto/residence/SearchResidenceDto.java
 /home/panagiotis/project/airbnb-like-server/src/main/java/com/webapplication/service/ResidenceServiceApiImpl.java

@@ -2,8 +2,11 @@ package com.webapplication.service;
 
 
 import com.webapplication.dto.user.*;
+import com.webapplication.entity.ResidenceEntity;
 import com.webapplication.entity.UserEntity;
 import com.webapplication.exception.RestException;
+
+import java.util.List;
 
 public interface UserServiceApi {
 
@@ -15,4 +18,5 @@ public interface UserServiceApi {
 
     UserEntity updateProfile(UserUpdateProfileDto userUpdateProfileDto);
 
+    List<ResidenceEntity> getUserResidences(UserUtilsDto userUtilsDto);
 }

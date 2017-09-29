@@ -38,6 +38,10 @@ public class UserEntity {
     @OneToOne(mappedBy = "user", cascade=CascadeType.ALL,fetch = FetchType.LAZY)
     private PhotoEntity profilePhoto;
 
+    @OneToOne(mappedBy = "user", cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
+    private CommentEntity comment;
+
     @JsonIgnore
     @JoinTable(name = "Users_have_Roles", joinColumns = {
             @JoinColumn(name = "USERNAME")
@@ -52,7 +56,6 @@ public class UserEntity {
     }, inverseJoinColumns = {
             @JoinColumn(name = "RESIDENCE_ID")
     })
-    @JsonIgnore
     @ManyToMany
     private List<ResidenceEntity> residences = new ArrayList<>();
 
@@ -77,6 +80,15 @@ public class UserEntity {
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JsonIgnore
     private MailboxEntity mailbox = new MailboxEntity();
+
+
+    public CommentEntity getComment() {
+        return comment;
+    }
+
+    public void setComment(CommentEntity comment) {
+        this.comment = comment;
+    }
 
     public String getUsername() {
         return username;

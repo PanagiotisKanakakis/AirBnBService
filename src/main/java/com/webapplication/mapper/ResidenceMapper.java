@@ -3,6 +3,7 @@ package com.webapplication.mapper;
 import com.webapplication.dao.UserRepository;
 import com.webapplication.dto.residence.AddResidenceRequestDto;
 import com.webapplication.dto.residence.AddResidenceResponseDto;
+import com.webapplication.entity.CommentEntity;
 import com.webapplication.entity.PhotoEntity;
 import com.webapplication.entity.ResidenceEntity;
 import com.webapplication.entity.UserEntity;
@@ -38,11 +39,18 @@ public class ResidenceMapper {
         residenceEntity.setBathrooms(addResidenceRequestDto.getBathrooms());
         residenceEntity.setSize(addResidenceRequestDto.getSize());
         residenceEntity.setBedrooms(addResidenceRequestDto.getBedrooms());
+        residenceEntity.setBeds(addResidenceRequestDto.getBeds());
         residenceEntity.setLivingRoom(addResidenceRequestDto.getLivingRoom());
         residenceEntity.setLocation(addResidenceRequestDto.getLocation());
         UserEntity user = userRepository.findUserEntityByUsername(addResidenceRequestDto.getUsername());
         user.getResidences().add(residenceEntity);
         residenceEntity.setUsers(Collections.singletonList(user));
+        for(String path : addResidenceRequestDto.getPhotoPaths()){
+            PhotoEntity photoEntity = new PhotoEntity();
+            photoEntity.setPath(path);
+            photoEntity.setResidenceEntity(residenceEntity);
+            residenceEntity.getPhotoPaths().add(photoEntity);
+        }
         return residenceEntity;
     }
 
@@ -66,9 +74,14 @@ public class ResidenceMapper {
         addResidenceResponseDto.setRules(residenceEntity.getRules());
         addResidenceResponseDto.setType(residenceEntity.getType());
         addResidenceResponseDto.setSize(residenceEntity.getSize());
-      //  addResidenceResponseDto.setUserId(residenceEntity.getUsers().get(0).getUserId());       // TODO needs to change
-      //  List<String> photos = Optional.ofNullable(residenceEntity.getPhotos().stream().map(PhotoEntity::getPath).collect(Collectors.toList())).orElse(new LinkedList<>());
-      //  addResidenceResponseDto.setPhotoPaths(photos);
+        addResidenceResponseDto.setBeds(residenceEntity.getBeds());
+        addResidenceResponseDto.setUsername(residenceEntity.getUsers().get(0).getUsername());
+        for(PhotoEntity photoEntity : residenceEntity.getPhotoPaths())
+            addResidenceResponseDto.getPhotoPaths().add(photoEntity.getPath());
+
+        for(CommentEntity commentEntity : residenceEntity.getComments())
+            addResidenceResponseDto.getComments().add(commentEntity);
+
         return addResidenceResponseDto;
     }
 }

@@ -3,6 +3,7 @@ package com.webapplication.service;
 import com.webapplication.authentication.Authenticator;
 import com.webapplication.dao.UserRepository;
 import com.webapplication.dto.user.*;
+import com.webapplication.entity.ResidenceEntity;
 import com.webapplication.entity.UserEntity;
 import com.webapplication.error.UserError;
 import com.webapplication.exception.AuthenticationException;
@@ -23,6 +24,7 @@ import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -108,6 +110,14 @@ public class UserServiceApiImpl implements UserServiceApi {
         userRepository.save(updatedUser);
         return updatedUser;
         //return userMapper.toUserProfileDto(updatedUser);
+    }
+
+    @Override
+    public List<ResidenceEntity> getUserResidences(UserUtilsDto userUtilsDto) {
+        UserEntity user = userRepository.findUserEntityByUsername(userUtilsDto.getUsername());
+        if(user == null)
+            return null;
+        return user.getResidences();
     }
 
     private byte[] createSaltForUser() throws NoSuchAlgorithmException {

@@ -1,6 +1,7 @@
 package com.webapplication.rest.residence;
 
 
+import com.webapplication.dto.comment.CommentDto;
 import com.webapplication.dto.residence.*;
 import com.webapplication.dto.user.UserUtilsDto;
 import com.webapplication.entity.ResidenceEntity;
@@ -30,7 +31,7 @@ public class ResidenceApiImpl implements ResidenceApi {
     }
 
     @Override
-    public ResidenceEntity searchResidenceById(@RequestBody SearchResidenceByIdDto searchResidenceByIdDto) throws RestException {
+    public AddResidenceResponseDto searchResidenceById(@RequestBody SearchResidenceByIdDto searchResidenceByIdDto) throws RestException {
         return residenceServiceApi.searchResidenceById(searchResidenceByIdDto);
     }
 
@@ -40,8 +41,8 @@ public class ResidenceApiImpl implements ResidenceApi {
     }
 
     @Override
-    public ResidenceEntity addComment(@RequestBody AddCommentToResidenceDto addCommentToResidenceDto) throws RestException {
-        return residenceServiceApi.addComment(addCommentToResidenceDto);
+    public void addComment(@RequestBody AddCommentToResidenceDto addCommentToResidenceDto) throws RestException {
+        residenceServiceApi.addComment(addCommentToResidenceDto);
     }
 
     @Override
@@ -62,6 +63,11 @@ public class ResidenceApiImpl implements ResidenceApi {
     @Override
     public void reserveResidence(@RequestBody ReservationDto reservationDto) throws RestException {
         residenceServiceApi.reserveResidence(reservationDto);
+    }
+
+    @Override
+    public List<CommentDto> getCommentsForResidence(@RequestBody SearchResidenceByIdDto searchResidenceByIdDto) throws RestException {
+        return residenceServiceApi.getCommentOfResidence(searchResidenceByIdDto);
     }
 
 

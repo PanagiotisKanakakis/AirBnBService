@@ -50,5 +50,6 @@ com/webapplication/dto/comment/CommentDto.class
 com/webapplication/entity/SearchEntity.class
 com/webapplication/entity/HIbernateDomainConverter.class
 com/webapplication/entity/MailboxEntity.class
+com/webapplication/mapper/CommentMapper.class
 com/webapplication/rest/message/MessageApiImpl.class
 com/webapplication/dto/residence/SearchResidenceByIdDto.class
