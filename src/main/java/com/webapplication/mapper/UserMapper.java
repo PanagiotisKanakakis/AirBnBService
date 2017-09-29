@@ -106,18 +106,17 @@ public class UserMapper {
 
     public UserEntity toUpdatedUserEntity(UserUpdateProfileDto userUpdateProfileDto) {
         UserEntity user = userRepository.findUserEntityByUsername(userUpdateProfileDto.getUsername());
-
         user.setName(userUpdateProfileDto.getName());
         user.setSurname(userUpdateProfileDto.getSurname());
-        user.setCity(userUpdateProfileDto.getCity());
+        //user.setCity(userUpdateProfileDto.getCity());
         user.setEmail(userUpdateProfileDto.getEmail());
         user.setPhoneNumber(userUpdateProfileDto.getPhoneNumber());
-        List<RoleEntity> roles = new LinkedList<>();
+        /*List<RoleEntity> roles = new LinkedList<>();
         userUpdateProfileDto.getRoleDtos()
                 .stream()
                 .map(RoleDto::getDescription)
                 .forEach(role -> roles.add(roleRepository.findRoleEntityByDescription(role)));
-        user.setRoles(roles);
+        user.setRoles(roles);*/
 
         if(user.getProfilePhoto() != null)
             user.getProfilePhoto().setPath(userUpdateProfileDto.getPhoto());

@@ -95,6 +95,7 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
     public List<ResidenceEntity> getAllResidences() {
         List<ResidenceEntity> resultSet = new ArrayList<>();
         residenceRepository.findAll().forEach(resultSet::add);
+        System.out.println(resultSet.size());
         return resultSet;
     }
 
@@ -158,7 +159,7 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
         if( user == null )
             throw new AuthenticationException(UserError.USER_NOT_EXISTS);
 
-
+        System.out.println(searchedResidences.size());
         if(searchedResidences.size() == 0){
             return getAllResidences();
         }else{
