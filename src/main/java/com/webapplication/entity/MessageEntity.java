@@ -105,10 +105,6 @@ public class MessageEntity implements Serializable {
 		this.toUser = toUser;
 	}
 
-	public void setMessageID(Integer messageID) {
-		this.messageID = messageID;
-	}
-
 	public MailboxEntity getInbox() {
 		return inbox;
 	}

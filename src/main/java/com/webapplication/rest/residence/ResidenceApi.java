@@ -41,7 +41,7 @@ public interface ResidenceApi {
     List<ResidenceEntity> getResidencesBasedOnUserSearchedLocations(UserUtilsDto userUtilsDto) throws  RestException;
 
     @RequestMapping(path = "/reserveResidence" , method = RequestMethod.POST ,consumes = "application/json")
-    void reserveResidence(ReservationDto reservationDto) throws  RestException;
+    ResidenceEntity reserveResidence(ReservationDto reservationDto) throws  RestException;
 
     @RequestMapping(path = "/getCommentsForResidence" , method = RequestMethod.POST,consumes = "application/json",
             produces = "application/json")

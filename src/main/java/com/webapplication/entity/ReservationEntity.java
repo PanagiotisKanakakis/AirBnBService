@@ -1,5 +1,7 @@
 package com.webapplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,10 +18,12 @@ public class ReservationEntity implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "RESERVATION_ID")
+    @JsonIgnore
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "RESIDENCE_ID")
+    @JsonIgnore
     private ResidenceEntity residenceEntity;
 
     @Column(name = "ARRIVAL_DATE")

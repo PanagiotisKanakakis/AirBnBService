@@ -62,17 +62,29 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
         for(ResidenceEntity re : rs)
             if (isAvailable(re,arrivalDate,departureDate))
                 resultSet.add(re);
-        return rs;
+        return resultSet;
     }
 
     private boolean isAvailable(ResidenceEntity re, Date arrivalDate, Date departureDate) {
 
         for(ReservationEntity res : re.getReservationInfo()){
-            if ( res.getDepartureDate().before( new Date()) )
+            System.out.println(res.getArrivalDate());
+            System.out.println(arrivalDate);
+
+            if (  (arrivalDate.after( res.getArrivalDate()) && arrivalDate.before(res.getDepartureDate()) )
+                ||(departureDate.after(res.getArrivalDate())&& departureDate.before(res.getDepartureDate()) ))
+                    return false;
+
+            if ( arrivalDate.before(res.getArrivalDate()) && departureDate.after(res.getDepartureDate()))
+                return false;
+
+
+            return true;
+            /*if ( res.getDepartureDate().before( new Date()) )
                 continue;
             else
                 if ( !((arrivalDate.after(res.getDepartureDate()) && departureDate.after(res.getDepartureDate()) ) || (arrivalDate.before(res.getArrivalDate()) && departureDate.before(res.getArrivalDate()) )) )
-                    return false;
+                    return false;*/
         }
 
         if(re.getReservationInfo() == null)
@@ -95,7 +107,6 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
     public List<ResidenceEntity> getAllResidences() {
         List<ResidenceEntity> resultSet = new ArrayList<>();
         residenceRepository.findAll().forEach(resultSet::add);
-        System.out.println(resultSet.size());
         return resultSet;
     }
 
@@ -159,7 +170,7 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
         if( user == null )
             throw new AuthenticationException(UserError.USER_NOT_EXISTS);
 
-        System.out.println(searchedResidences.size());
+        System.out.println("Users search list -> " + searchedResidences.size());
         if(searchedResidences.size() == 0){
             return getAllResidences();
         }else{
@@ -170,12 +181,14 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
                         resultSet.add(r);
                 }
             }
+            if(resultSet.size() == 0)
+                return getAllResidences();
         }
         return new ArrayList<>(resultSet);
     }
 
     @Override
-    public void reserveResidence(ReservationDto reservationDto) throws RestException{
+    public ResidenceEntity reserveResidence(ReservationDto reservationDto) throws RestException{
 
         ReservationEntity re = new ReservationEntity();
         ResidenceEntity r = residenceRepository.findOne(reservationDto.getResidenceId());
@@ -187,10 +200,13 @@ public class ResidenceServiceApiImpl implements ResidenceServiceApi {
             throw new ResidenceException(ResidenceError.RESIDENCE_ID_NOT_EXISTS);
 
         re.setResidenceEntity(r);
+        System.out.println(reservationDto.getArrivalDate());
         re.setArrivalDate(reservationDto.getArrivalDate());
         re.setDepartureDate(reservationDto.getDepartureDate());
         u.getReservedResidences().add(re);
         r.getReservationInfo().add(re);
+
+        return r;
     }
 
     @Override

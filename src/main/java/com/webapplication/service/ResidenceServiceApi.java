@@ -28,7 +28,7 @@ public interface ResidenceServiceApi {
 
     List<ResidenceEntity> getResidencesBasedOnUserSearchedLocations(UserUtilsDto userUtilsDto);
 
-    void reserveResidence(ReservationDto reservationDto) throws RestException;
+    ResidenceEntity reserveResidence(ReservationDto reservationDto) throws RestException;
 
     List<CommentDto> getCommentOfResidence(SearchResidenceByIdDto searchResidenceByIdDto) throws RestException;
 }

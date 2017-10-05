@@ -2,6 +2,7 @@ package com.webapplication.dto.residence;
 
 
 import com.webapplication.entity.CommentEntity;
+import com.webapplication.entity.ReservationEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,15 @@ public class AddResidenceResponseDto {
     private String  username;
     private List<String> photoPaths = new ArrayList<>();
     private List<CommentEntity> comments = new ArrayList<>();
+    private List<ReservationEntity> reservationInfo = new ArrayList<>();
 
+    public List<ReservationEntity> getReservationInfo() {
+        return reservationInfo;
+    }
+
+    public void setReservationInfo(List<ReservationEntity> reservationInfo) {
+        this.reservationInfo = reservationInfo;
+    }
 
     public List<CommentEntity> getComments() {
         return comments;

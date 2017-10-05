@@ -51,6 +51,7 @@ public class ResidenceMapper {
             photoEntity.setResidenceEntity(residenceEntity);
             residenceEntity.getPhotoPaths().add(photoEntity);
         }
+
         return residenceEntity;
     }
 
@@ -82,6 +83,7 @@ public class ResidenceMapper {
         for(CommentEntity commentEntity : residenceEntity.getComments())
             addResidenceResponseDto.getComments().add(commentEntity);
 
+        addResidenceResponseDto.setReservationInfo(residenceEntity.getReservationInfo());
         return addResidenceResponseDto;
     }
 }
