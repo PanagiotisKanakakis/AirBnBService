@@ -1,0 +1,45 @@
+package com.main.dto.comment;
+
+/**
+ * Created by panagiotis on 3/9/2017.
+ */
+public class CommentDto {
+
+    private Integer commentId;
+    private String comment;
+    private Integer grade;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Integer getCommentId() {
+            return commentId;
+        }
+
+    public void setCommentId(Integer commentId) {
+        this.commentId = commentId;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
+
+}

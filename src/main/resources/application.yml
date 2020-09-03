@@ -1,0 +1,48 @@
+server:
+  servlet:
+    context-path: /airbnb-service
+  address: localhost
+  port: 8080
+
+spring:
+  datasource:
+    port: ${SPRING_DATASOURCE_PORT:3307}
+    address: ${SPRING_DATASOURCE_ADDRESS:localhost}
+    url: jdbc:mysql://${spring.datasource.address}:${spring.datasource.port}/airbnb?useSSL=false
+    username: root
+    password: ${SPRING_DATASOURCE_PASSWORD:example}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+security:
+  jwt:
+    token:
+      secret-key: secret-key
+      expire-length: 300000
+  admin:
+    usernames: us1,us2
+    #
+    # Encryption algorithm
+  algorithm: PBKDF2WithHmacSHA1
+
+
+    #
+  # SecureRandom instance
+  secureRandomInstance: SHA1PRNG
+
+    #
+  # Derived key length
+  derivedKeyLength: 160
+
+    #
+  # Iterations for password encryption
+  iterations: 20000
