@@ -27,4 +27,7 @@ public interface UserApi {
 
     @RequestMapping(path = "/getUserResidences", method = RequestMethod.POST,consumes = "application/json",produces = "application/json")
     List<ResidenceEntity> getUserResidences(UserUtilsDto userUtilsDto) throws RestException;
+
+    @RequestMapping(path = "/getRecommendedListings", method = RequestMethod.POST,consumes = "application/json",produces = "application/json")
+    List<ResidenceEntity> getRecommendedListings(UserUtilsDto userUtilsDto) throws RestException;
 }

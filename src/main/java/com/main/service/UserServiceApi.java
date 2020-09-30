@@ -19,4 +19,6 @@ public interface UserServiceApi {
     UserEntity updateProfile(UserUpdateProfileDto userUpdateProfileDto);
 
     List<ResidenceEntity> getUserResidences(UserUtilsDto userUtilsDto);
+
+    List<ResidenceEntity> getRecommendedListings(UserUtilsDto userUtilsDto);
 }

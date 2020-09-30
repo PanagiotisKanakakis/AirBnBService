@@ -25,10 +25,30 @@ public class AddResidenceResponseDto {
     private Integer beds;
     private Boolean livingRoom;
     private String location;
-    private String  username;
+    private String username;
+    private String title;
+    private Integer kitchen;
+
+    private Integer heating;
+
+    private Integer elevator;
+
+    private Integer parking;
+    private Integer wifi;
+
+
+
     private List<String> photoPaths = new ArrayList<>();
     private List<CommentEntity> comments = new ArrayList<>();
     private List<ReservationEntity> reservationInfo = new ArrayList<>();
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public List<ReservationEntity> getReservationInfo() {
         return reservationInfo;
@@ -190,4 +210,43 @@ public class AddResidenceResponseDto {
         this.photoPaths = photoPaths;
     }
 
+    public Integer getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Integer kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public Integer getHeating() {
+        return heating;
+    }
+
+    public void setHeating(Integer heating) {
+        this.heating = heating;
+    }
+
+    public Integer getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(Integer elevator) {
+        this.elevator = elevator;
+    }
+
+    public Integer getParking() {
+        return parking;
+    }
+
+    public void setParking(Integer parking) {
+        this.parking = parking;
+    }
+
+    public Integer getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(Integer wifi) {
+        this.wifi = wifi;
+    }
 }

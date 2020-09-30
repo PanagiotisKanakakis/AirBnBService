@@ -59,6 +59,21 @@ public class ResidenceEntity {
     @Column(name = "BEDS")
     private Integer beds;
 
+    @Column(name = "WIFI")
+    private Integer wifi;
+
+    @Column(name = "KITCHEN")
+    private Integer kitchen;
+
+    @Column(name = "HEATING")
+    private Integer heating;
+
+    @Column(name = "ELEVATOR")
+    private Integer elevator;
+
+    @Column(name = "PARKING")
+    private Integer parking;
+
     @OneToMany(mappedBy = "residenceEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Column(name = "Photo paths")
     private List<PhotoEntity> photoPaths = new ArrayList<>();
@@ -232,5 +247,45 @@ public class ResidenceEntity {
 
     public void setBeds(Integer beds) {
         this.beds = beds;
+    }
+
+    public Integer getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(Integer wifi) {
+        this.wifi = wifi;
+    }
+
+    public Integer getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Integer kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public Integer getHeating() {
+        return heating;
+    }
+
+    public void setHeating(Integer heating) {
+        this.heating = heating;
+    }
+
+    public Integer getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(Integer elevator) {
+        this.elevator = elevator;
+    }
+
+    public Integer getParking() {
+        return parking;
+    }
+
+    public void setParking(Integer parking) {
+        this.parking = parking;
     }
 }

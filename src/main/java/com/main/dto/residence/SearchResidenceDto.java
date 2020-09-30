@@ -1,5 +1,7 @@
 package com.main.dto.residence;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -11,11 +13,57 @@ public class SearchResidenceDto {
 
     private String location;
 
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date arrivalDate;
-
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date departureDate;
 
     private Integer capacity;
+    private Integer wifi;
+    private Integer kitchen;
+    private Integer heating;
+    private Integer parking;
+    private Integer elevator;
+
+    public Integer getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(Integer wifi) {
+        this.wifi = wifi;
+    }
+
+    public Integer getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Integer kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public Integer getHeating() {
+        return heating;
+    }
+
+    public void setHeating(Integer heating) {
+        this.heating = heating;
+    }
+
+    public Integer getParking() {
+        return parking;
+    }
+
+    public void setParking(Integer parking) {
+        this.parking = parking;
+    }
+
+    public Integer getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(Integer elevator) {
+        this.elevator = elevator;
+    }
 
     public Integer getCapacity() {
         return capacity;

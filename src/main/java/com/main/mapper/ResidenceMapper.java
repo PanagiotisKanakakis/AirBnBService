@@ -24,6 +24,7 @@ public class ResidenceMapper {
         }
 
         ResidenceEntity residenceEntity = new ResidenceEntity();
+//        residenceEntity.setResidenceId(Integer.parseInt(addResidenceRequestDto.getId()));
         residenceEntity.setAddress(addResidenceRequestDto.getAddress());
         residenceEntity.setGeoX(addResidenceRequestDto.getGeoX());
         residenceEntity.setGeoY(addResidenceRequestDto.getGeoY());
@@ -38,6 +39,13 @@ public class ResidenceMapper {
         residenceEntity.setBeds(addResidenceRequestDto.getBeds());
         residenceEntity.setLivingRoom(addResidenceRequestDto.getLivingRoom());
         residenceEntity.setLocation(addResidenceRequestDto.getLocation());
+        residenceEntity.setTitle(addResidenceRequestDto.getTitle());
+        residenceEntity.setBeds(addResidenceRequestDto.getBeds());
+        residenceEntity.setWifi(addResidenceRequestDto.getWifi());
+        residenceEntity.setKitchen(addResidenceRequestDto.getKitchen());
+        residenceEntity.setHeating(addResidenceRequestDto.getHeating());
+        residenceEntity.setParking(addResidenceRequestDto.getParking());
+        residenceEntity.setElevator(addResidenceRequestDto.getElevator());
         UserEntity user = userRepository.findUserEntityByUsername(addResidenceRequestDto.getUsername());
         user.getResidences().add(residenceEntity);
         residenceEntity.setUsers(Collections.singletonList(user));
@@ -72,7 +80,13 @@ public class ResidenceMapper {
         addResidenceResponseDto.setType(residenceEntity.getType());
         addResidenceResponseDto.setSize(residenceEntity.getSize());
         addResidenceResponseDto.setBeds(residenceEntity.getBeds());
+        addResidenceResponseDto.setTitle(residenceEntity.getTitle());
         addResidenceResponseDto.setUsername(residenceEntity.getUsers().get(0).getUsername());
+        addResidenceResponseDto.setHeating(residenceEntity.getHeating());
+        addResidenceResponseDto.setElevator(residenceEntity.getElevator());
+        addResidenceResponseDto.setParking(residenceEntity.getParking());
+        addResidenceResponseDto.setKitchen(residenceEntity.getKitchen());
+        addResidenceResponseDto.setWifi(residenceEntity.getWifi());
         for(PhotoEntity photoEntity : residenceEntity.getPhotoPaths())
             addResidenceResponseDto.getPhotoPaths().add(photoEntity.getPath());
 

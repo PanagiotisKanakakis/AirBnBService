@@ -50,6 +50,11 @@ public class UserApiImpl implements UserApi {
         return userServiceApi.getUserResidences(userUtilsDto);
     }
 
+    @Override
+    public List<ResidenceEntity> getRecommendedListings(@RequestBody UserUtilsDto userUtilsDto) throws RestException {
+        return userServiceApi.getRecommendedListings(userUtilsDto);
+    }
+
     @ExceptionHandler({UserAlreadyExistsException.class, ConfigurationException.class})
     private void conflict(UserAlreadyExistsException e, HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.CONFLICT.value());
@@ -64,5 +69,7 @@ public class UserApiImpl implements UserApi {
     private void generic(RestException e, HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
+
+
 
 }

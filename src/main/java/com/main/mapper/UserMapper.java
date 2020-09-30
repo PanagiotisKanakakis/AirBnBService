@@ -44,7 +44,7 @@ public class UserMapper {
         PhotoEntity photo = new PhotoEntity();
         photo.setPath(userRegisterRequestDto.getPhotoPath());
         photo.setUser(userEntity);
-        userEntity.setProfilePhoto(photo);
+//        userEntity.setProfilePhoto(photo);
         return userEntity;
     }
 
@@ -61,9 +61,8 @@ public class UserMapper {
         userRegisterResponseDto.setEmail(userEntity.getEmail());
         userRegisterResponseDto.setPhoneNumber(userEntity.getPhoneNumber());
         userRegisterResponseDto.setRoleDtos(roleEntitiesToRoleDtos(userEntity.getRoles()));
-        userRegisterResponseDto.setCity(userEntity.getCity());
-        if(userEntity.getProfilePhoto() != null)
-            userRegisterResponseDto.setPhoto(userEntity.getProfilePhoto().getPath());
+//        if(userEntity.getProfilePhoto() != null)
+//            userRegisterResponseDto.setPhoto(userEntity.getProfilePhoto().getPath());
 
         return userRegisterResponseDto;
     }
@@ -73,8 +72,8 @@ public class UserMapper {
         userLogInResponseDto.setUsername(userEntity.getUsername());
         userLogInResponseDto.setRoleDtos(roleEntitiesToRoleDtos(userEntity.getRoles()));
         userLogInResponseDto.setAuthToken(authToken);
-        if(userEntity.getProfilePhoto() != null)
-            userLogInResponseDto.setPhoto(userEntity.getProfilePhoto().getPath());
+//        if(userEntity.getProfilePhoto() != null)
+//            userLogInResponseDto.setPhoto(userEntity.getProfilePhoto().getPath());
 
         return userLogInResponseDto;
     }
@@ -92,15 +91,14 @@ public class UserMapper {
         userProfileDto.setName(user.getName());
         userProfileDto.setSurname(user.getSurname());
         userProfileDto.setPhoneNumber(user.getPhoneNumber());
-        userProfileDto.setCity(user.getCity());
         userProfileDto.setRoleDtos(roleEntitiesToRoleDtos(user.getRoles()));
         List<CommentEntity> comments = new ArrayList<>();
         for(ResidenceEntity r : user.getResidences())
             comments.addAll(r.getComments());
 
         userProfileDto.setComments(comments);
-        if(user.getProfilePhoto() != null)
-            userProfileDto.setPhoto(user.getProfilePhoto().getPath());
+//        if(user.getProfilePhoto() != null)
+//            userProfileDto.setPhoto(user.getProfilePhoto().getPath());
         return userProfileDto;
     }
 
@@ -118,14 +116,14 @@ public class UserMapper {
                 .forEach(role -> roles.add(roleRepository.findRoleEntityByDescription(role)));
         user.setRoles(roles);*/
 
-        if(user.getProfilePhoto() != null)
-            user.getProfilePhoto().setPath(userUpdateProfileDto.getPhoto());
-        else{
-            PhotoEntity photo = new PhotoEntity();
-            photo.setPath(userUpdateProfileDto.getPhoto());
-            photo.setUser(user);
-            user.setProfilePhoto(photo);
-        }
+//        if(user.getProfilePhoto() != null)
+//            user.getProfilePhoto().setPath(userUpdateProfileDto.getPhoto());
+//        else{
+//            PhotoEntity photo = new PhotoEntity();
+//            photo.setPath(userUpdateProfileDto.getPhoto());
+//            photo.setUser(user);
+//            user.setProfilePhoto(photo);
+//        }
         return user;
     }
 }

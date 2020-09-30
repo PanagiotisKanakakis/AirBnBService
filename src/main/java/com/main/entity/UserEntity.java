@@ -11,6 +11,10 @@ import java.util.List;
 public class UserEntity {
 
     @Id
+    @GeneratedValue
+    @Column(name = "USER_ID")
+    private int id;
+
     @Column(name = "USERNAME")
     private String username;
 
@@ -29,20 +33,17 @@ public class UserEntity {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @Column(name = "CITY")
-    private String city;
-
     @Column(name = "SALT")
     private String salt;
 
-    @OneToOne(mappedBy = "user", cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-    private PhotoEntity profilePhoto;
+//    @OneToOne(mappedBy = "user", cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+//    private PhotoEntity profilePhoto;
 
-    @OneToOne(mappedBy = "user", cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
     @JsonIgnore
-    private CommentEntity comment;
+    private List<CommentEntity> comments;
 
-    @JsonIgnore
+
     @JoinTable(name = "Users_have_Roles", joinColumns = {
             @JoinColumn(name = "USERNAME")
     }, inverseJoinColumns = {
@@ -74,20 +75,27 @@ public class UserEntity {
             @JoinColumn(name = "RESERVATION_ID")
     })
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<ReservationEntity> reservedResidences = new ArrayList<>();
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JsonIgnore
     private MailboxEntity mailbox = new MailboxEntity();
 
-
-    public CommentEntity getComment() {
-        return comment;
+    public int getId() {
+        return id;
     }
 
-    public void setComment(CommentEntity comment) {
-        this.comment = comment;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
     }
 
     public String getUsername() {
@@ -185,20 +193,12 @@ public class UserEntity {
     public void setMailbox(MailboxEntity mailbox) {
         this.mailbox = mailbox;
     }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+/*
     public PhotoEntity getProfilePhoto() {
         return profilePhoto;
     }
 
     public void setProfilePhoto(PhotoEntity profilePhoto) {
         this.profilePhoto = profilePhoto;
-    }
+    }*/
 }

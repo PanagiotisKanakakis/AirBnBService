@@ -15,7 +15,7 @@ public class CommentEntity {
     @Column(name = "COMMENT_ID")
     private Integer commentId;
 
-    @Column(name = "COMMENT")
+    @Column(name = "COMMENT",length = 4096)
     private String comment;
 
     @Column(name = "GRADE")
@@ -26,7 +26,7 @@ public class CommentEntity {
     @JsonIgnore
     private ResidenceEntity residenceEntity;
 
-    @OneToOne
+    @ManyToOne
     @JsonIgnore
     private UserEntity user;
 

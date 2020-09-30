@@ -9,4 +9,5 @@ public interface ResidenceRepository extends CrudRepository<ResidenceEntity, Int
 
     List<ResidenceEntity> findByLocationOrCapacity(String location, Integer capacity);
 
+    List<ResidenceEntity> findAllByOrderByResidenceId();
 }

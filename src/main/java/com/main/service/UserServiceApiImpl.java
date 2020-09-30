@@ -1,8 +1,11 @@
 package com.main.service;
 
-import com.main.authentication.Authenticator;
+import com.main.dao.ResidenceRepository;
 import com.main.dao.UserRepository;
-import com.main.dto.user.*;
+import com.main.dto.user.UserLogInRequestDto;
+import com.main.dto.user.UserRegisterRequestDto;
+import com.main.dto.user.UserUpdateProfileDto;
+import com.main.dto.user.UserUtilsDto;
 import com.main.entity.ResidenceEntity;
 import com.main.entity.UserEntity;
 import com.main.error.UserError;
@@ -22,11 +25,8 @@ import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
-import java.time.Clock;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Transactional
 @Service
@@ -39,7 +39,7 @@ public class UserServiceApiImpl implements UserServiceApi {
     private UserRepository userRepository;
 
     @Autowired
-    private Authenticator authenticator;
+    ResidenceServiceApi residenceServiceApi;
 
 //    @Autowired
 //    private Clock clock;
@@ -90,9 +90,6 @@ public class UserServiceApiImpl implements UserServiceApi {
         if (!validated) {
             throw new AuthenticationException(UserError.INVALID_CREDENTIALS);
         }
-        SessionInfo sessionInfo = null;// new SessionInfo(user.getUsername(), LocalDateTime.now(clock).plusMinutes(Authenticator.SESSION_TIME_OUT_MINUTES));
-        UUID authToken = authenticator.createSession(sessionInfo);
-        System.out.println(user.getUsername());
         return user;
         //return userMapper.toUserLogInResponseDto(user, authToken);
     }
@@ -115,9 +112,14 @@ public class UserServiceApiImpl implements UserServiceApi {
     @Override
     public List<ResidenceEntity> getUserResidences(UserUtilsDto userUtilsDto) {
         UserEntity user = userRepository.findUserEntityByUsername(userUtilsDto.getUsername());
-        if(user == null)
+        if (user == null)
             return null;
         return user.getResidences();
+    }
+
+    @Override
+    public List<ResidenceEntity> getRecommendedListings(UserUtilsDto userUtilsDto) {
+        return residenceServiceApi.getRecommentedResidences(userUtilsDto);
     }
 
     private byte[] createSaltForUser() throws NoSuchAlgorithmException {

@@ -1,9 +1,12 @@
 package com.main.dto.residence;
 
 
+import javax.persistence.Column;
 import java.util.List;
 
 public class AddResidenceRequestDto {
+
+    private String id;
 
     private String address;
 
@@ -33,6 +36,17 @@ public class AddResidenceRequestDto {
 
     private String location;
 
+    private Integer wifi;
+
+    private Integer kitchen;
+
+    private Integer heating;
+
+    private Integer elevator;
+
+    private Integer parking;
+
+
     private String username;
 
     private List<String> photoPaths;
@@ -40,6 +54,14 @@ public class AddResidenceRequestDto {
     private String title;
 
     private Integer beds;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -185,4 +207,43 @@ public class AddResidenceRequestDto {
         this.photoPaths = photoPaths;
     }
 
+    public Integer getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(Integer wifi) {
+        this.wifi = wifi;
+    }
+
+    public Integer getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Integer kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public Integer getHeating() {
+        return heating;
+    }
+
+    public void setHeating(Integer heating) {
+        this.heating = heating;
+    }
+
+    public Integer getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(Integer elevator) {
+        this.elevator = elevator;
+    }
+
+    public Integer getParking() {
+        return parking;
+    }
+
+    public void setParking(Integer parking) {
+        this.parking = parking;
+    }
 }

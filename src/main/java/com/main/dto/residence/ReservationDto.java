@@ -1,5 +1,7 @@
 package com.main.dto.residence;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -9,7 +11,9 @@ public class ReservationDto {
 
     private String username;
     private Integer residenceId;
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date arrivalDate;
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date departureDate;
 
     public void setDepartureDate(Date departureDate) {
